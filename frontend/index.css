@@ -1,0 +1,394 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #2d3436;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-input-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#task {
+    flex: 1;
+    min-width: 200px;
+    height: 45px;
+    padding: 10px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#task:focus {
+    outline: none;
+    border-color: #43c5f8;
+}
+
+#priority {
+    padding: 10px 15px;
+    padding-right: 35px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+
+#priority:hover {
+    border-color: #43c5f8;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2343c5f8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+#priority:focus {
+    outline: none;
+    border-color: #43c5f8;
+    box-shadow: 0 0 0 3px rgba(67, 197, 248, 0.1);
+}
+
+#priority option {
+    padding: 10px;
+    font-size: 16px;
+}
+
+#addBtn {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #43c5f8 0%, #2196f3 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#addBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+}
+
+#addBtn:active {
+    transform: translateY(0);
+}
+
+.filter-section {
+    margin: 30px 0;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.filter-group {
+    flex: 1;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.filter-group h3 {
+    margin: 0 0 15px 0;
+    color: #2d3436;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.status, .priority-filter {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.status button, .priority-filter button {
+    padding: 8px 20px;
+    border: none;
+    background: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #666;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.status button:hover, .priority-filter button:hover {
+    color: #333;
+    background: rgba(67, 197, 248, 0.1);
+    transform: translateY(-1px);
+}
+
+.status button.active, .priority-filter button.active {
+    color: #2196f3;
+    font-weight: 600;
+    background: rgba(67, 197, 248, 0.1);
+}
+
+.status button.active::after, .priority-filter button.active::after {
+    display: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    min-height: 60px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="checkbox"] {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #2196f3;
+}
+
+.task-text {
+    flex: 1;
+    margin-right: 15px;
+    word-break: break-word;
+    font-size: 16px;
+}
+
+.priority-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 15px;
+    text-transform: uppercase;
+}
+
+.priority-high .priority-badge {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.priority-medium .priority-badge {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+.priority-low .priority-badge {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.edit-icon, .delete-icon {
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 15px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.delete-icon {
+    color: #dc3545;
+}
+
+.edit-icon:hover, .delete-icon:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.05);
+    transform: scale(1.1);
+}
+
+.completed .task-text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Priority colors */
+.priority-high {
+    border-left: 4px solid #d32f2f !important;
+}
+
+.priority-medium {
+    border-left: 4px solid #f57c00 !important;
+}
+
+.priority-low {
+    border-left: 4px solid #388e3c !important;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .task-input-group {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    #task, #priority {
+        width: 100%;
+    }
+
+    #addBtn {
+        width: 100%;
+    }
+
+    .filter-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .filter-group {
+        padding: 15px;
+    }
+
+    .status, .priority-filter {
+        flex-wrap: wrap;
+    }
+
+    .status button, .priority-filter button {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+
+    li {
+        padding: 12px 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    .filter-group {
+        padding: 12px;
+    }
+
+    .filter-group h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .status button, .priority-filter button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    li {
+        padding: 10px 12px;
+    }
+
+    .task-text {
+        font-size: 14px;
+    }
+
+    .edit-icon, .delete-icon {
+        font-size: 16px;
+    }
+}
+
+.reorder-icon {
+    cursor: move;
+    font-size: 28px;
+    margin-right: 15px;
+    color: #999;
+    transition: all 0.3s ease;
+    user-select: none;
+    display: inline-block;
+    line-height: 1;
+    transform: rotate(-45deg);
+}
+
+.reorder-icon:hover {
+    color: #666;
+    transform: rotate(-45deg) scale(1.1);
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .reorder-icon {
+        font-size: 24px;
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .reorder-icon {
+        font-size: 20px;
+        margin-right: 8px;
+    }
+}
+
+/* Update the task item layout to accommodate the reorder icon */
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    min-height: 60px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.todo-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.todo-item:hover .reorder-icon {
+    color: #666;
+}

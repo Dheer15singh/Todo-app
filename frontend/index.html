@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To-D0 app</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- form: input field and button  -->
+        <form onsubmit="return false;">
+            <div class="task-input-group">
+                <input id="task" type="text" name="task" placeholder="New task ..." required>
+                <select id="priority" name="priority">
+                    <option value="low">Low Priority</option>
+                    <option value="medium" selected>Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+                <button id="addBtn" type="submit">Add</button>
+            </div>
+        </form>
+
+        <!-- filter section -->
+        <div class="filter-section">
+            <!-- status filter -->
+            <div class="filter-group">
+                <h3>Task Status</h3>
+                <div class="status">
+                    <button id="all" class="active">All</button>
+                    <button id="active">Active</button>
+                    <button id="completed">Completed</button>
+                </div>
+            </div>
+
+            <!-- priority filter -->
+            <div class="filter-group">
+                <h3>Priority Level</h3>
+                <div class="priority-filter">
+                    <button id="priority-all" class="active">All</button>
+                    <button id="priority-high">High</button>
+                    <button id="priority-medium">Medium</button>
+                    <button id="priority-low">Low</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- list where tasks will be added -->
+        <ul id="task-list">
+        </ul>
+    </div>
+
+    <script src="index.js"></script>        
+</body>
+</html>
